@@ -44,9 +44,9 @@ def home():
         user_prompt = request.form.get("prompt")
         if user_prompt:
             try:
-                # Call Qwen via Hugging Face Inference API
+                # Call Qwen via Hugging Face Inference API (fixed method name)
                 messages = [{"role": "user", "content": user_prompt}]
-                completion = client.chat.completion(
+                completion = client.chat_completion(
                     model="Qwen/Qwen2.5-Coder-7B-Instruct",
                     messages=messages,
                     max_tokens=500,
@@ -59,4 +59,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-  
+    
